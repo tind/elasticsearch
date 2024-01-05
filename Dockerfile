@@ -5,4 +5,8 @@ COPY --from=concatplugin /usr/src/elasticsearch-concatenate-token-filter/target/
 RUN bin/elasticsearch-plugin install file:///usr/share/elasticsearch/elasticsearch-concatenate-1.2.1.zip && \
     bin/elasticsearch-plugin install analysis-icu
 
-RUN export DEBIAN_FRONTEND=noninteractive && apt update && apt install -y dnsutils
+RUN export DEBIAN_FRONTEND=noninteractive && \
+    apt update && \
+    apt install -y dnsutils && \
+    apt clean && \
+    rm -rf /var/lib/apt/lists/*"

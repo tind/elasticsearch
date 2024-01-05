@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Test with some delay
+sleep 30
+
 # Run the command to generate the unicast_hosts.txt file
 dig SRV elasticsearch.elasticsearch.internal | awk '/IN SRV/ {print $8 ":" $7}' | sed 's/\.:/:/g' > /usr/share/elasticsearch/config/unicast_hosts.txt
 
